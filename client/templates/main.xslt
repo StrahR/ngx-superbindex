@@ -39,8 +39,6 @@
 
         <html>
             <head>
-                <title>superbindex</title>
-
                 <meta name="version" content="{{version}}" />
                 <meta name="viewport" content="initial-scale=1, shrink-to-fit=no, viewport-fit=cover, width=device-width, height=device-height" />
 
