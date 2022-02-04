@@ -7,17 +7,27 @@ export default class AssetItem extends CustomElement(HTMLLIElement) {
 
     link = this.getCustomElement(AssetLink)
 
-    highlight(highlightedGraphemes) {
-        this.link.highlight(highlightedGraphemes)
+    constructor() {
+        super()
+        this.setAttribute("name", this.name)
+    }
 
-        const filtered = highlightedGraphemes === '' || this.link.highlighted
+    highlight(pos) {
+        this.link.highlight(pos)
+        this.classList.toggle('asset-item--filtered', false)
+    }
 
-        this.ariaHidden = filtered ? null : true
-        this.classList.toggle('asset-item--filtered', !filtered)
+    clearHighlight() {
+        this.link.clearHighlight()
+        this.classList.toggle('asset-item--filtered', true)
     }
 
     get highlighted() {
         return this.link.highlighted
+    }
+
+    get name() {
+        return this.link.name
     }
 
     focus() {
