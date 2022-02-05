@@ -34,6 +34,8 @@
         </xsl:if>
     </xsl:variable>
 
+
+    <xsl:param name="path" />
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 
@@ -44,6 +46,8 @@
 
                 <style><![CDATA[{{style}}]]></style>
 
+                <title>muf.moe<xsl:value-of select="$path" /></title>
+
                 <xsl:if test="normalize-space($custom-colors) != ''">
                     <style>
                         <xsl:text>:root {</xsl:text>
@@ -53,6 +57,7 @@
                 </xsl:if>
             </head>
             <body>
+                <h2><xsl:value-of select="$path" /></h2>
                 <ol aria-label="asset list" is="asset-list" class="asset-list">
                     <xsl:for-each select="list/*">
                         <li is="asset-item">
